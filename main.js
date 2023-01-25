@@ -2,14 +2,36 @@
 
 const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
-function generateKey(num, characters)
-{
-  let randomWord = 0;
-for(let i = 0;i < num - 1;i++) {
-    randomWord += characters[Math.floor(Math.random()*characters.length)];
+// Первый вариант
+
+// function generateKey(num, characters)
+// {
+//   let randomWord = '';
+// for(let i = 0;i < num - 1;i++) {
+//     randomWord += characters[Math.floor(Math.random()*characters.length+1)];
+// }
+//     return randomWord;
+// }
+
+// const key = generateKey(16, characters);
+// console.log(key); 
+
+// Второй вариант
+
+function generateRandomNumber(n) {
+  return Math.floor(Math.random() * n + 1);
 }
-    return randomWord;
+
+
+function generateKey(num, characters) {
+  let string = '';
+  for(let i = 0;i < num;i++) {
+    const randomNumber = generateRandomNumber(characters.length - 1);
+    string += characters[randomNumber];
+  }
+  return string;
 }
 
 const key = generateKey(16, characters);
-console.log(key); 
+console.log(key);
+
